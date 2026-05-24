@@ -1,4 +1,4 @@
-# Cessna 172 Skyhawk — stall speed ≈ 23 m/s (83 km/h) at this AoA
+# Cessna 172 Skyhawk — stall speed ≈ 24 m/s (86 km/h) at max AoA
 [vehicle]
 name = "Cessna 172 Skyhawk"
 mass_kg = 1111.0              # MTOW with full fuel + pilot
@@ -7,6 +7,8 @@ lift_coefficient = 0.3        # baseline Cl at 0° AoA (wing camber)
 frontal_area_m2 = 1.75
 reference_area_m2 = 16.2      # wing planform area
 stall_aoa_deg = 16.0
+aspect_ratio = 7.47           # 11.0m wingspan² / 16.2m² wing area
+oswald_efficiency = 0.75
 
 [environment]
 air_density_kg_m3 = 1.225
@@ -18,5 +20,10 @@ vehicle_type = "aircraft"
 velocity_start_ms = 10.0
 velocity_end_ms = 80.0
 velocity_step_ms = 1.0
-angle_of_attack_deg = 16.0    # at stall AoA to show transition point
+angle_of_attack_deg = 16.0    # at stall AoA — shows the airborne transition
 output_file = "cessna_172.csv"
+# AoA sweep params (used with --aoa-sweep flag)
+velocity_fixed_ms = 50.0      # ~180 km/h cruise
+aoa_start_deg = -2.0
+aoa_end_deg = 18.0
+aoa_step_deg = 0.5

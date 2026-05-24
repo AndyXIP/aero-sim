@@ -11,6 +11,9 @@ pub enum AeroError {
     #[error("CSV error: {0}")]
     Csv(#[from] csv::Error),
 
+    #[error("JSON error: {0}")]
+    Json(#[from] serde_json::Error),
+
     #[error("Invalid configuration: {0}")]
     InvalidConfig(String),
 

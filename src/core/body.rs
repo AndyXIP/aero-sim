@@ -20,6 +20,16 @@ pub trait AerodynamicBody {
         16.0
     }
 
+    /// Aspect ratio (b² / A_ref). Used for induced drag. Default: 8.0.
+    fn aspect_ratio(&self) -> f64 {
+        8.0
+    }
+
+    /// Oswald efficiency factor (0–1). Used for induced drag. Default: 0.8.
+    fn oswald_efficiency(&self) -> f64 {
+        0.8
+    }
+
     /// Hull drag coefficient (Cd_hull). Marine vessels only. `None` for others.
     fn hull_drag_coefficient(&self) -> Option<f64> {
         None

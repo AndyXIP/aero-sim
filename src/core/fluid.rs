@@ -1,5 +1,6 @@
 /// Properties of the fluid (air) the body moves through.
 #[derive(Debug, Clone)]
+#[allow(dead_code)]
 pub struct FluidEnvironment {
     /// Air density [kg/m³].
     pub air_density: f64,
@@ -11,6 +12,7 @@ pub struct FluidEnvironment {
 
 impl FluidEnvironment {
     /// ISA sea-level standard atmosphere, no wind.
+    #[allow(dead_code)]
     pub fn standard_air() -> Self {
         Self {
             air_density: 1.225,

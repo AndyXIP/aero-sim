@@ -24,6 +24,10 @@ pub struct VehicleConfig {
     pub reference_area_m2: f64,
     /// Critical AoA at which stall begins [degrees]. Aircraft only. Defaults to 16°.
     pub stall_aoa_deg: Option<f64>,
+    /// Aspect ratio (b² / A_ref). Aircraft only. Defaults to 8.0.
+    pub aspect_ratio: Option<f64>,
+    /// Oswald efficiency factor (0–1). Aircraft only. Defaults to 0.8.
+    pub oswald_efficiency: Option<f64>,
     /// Hull drag coefficient (Cd_hull). Boats only.
     pub hull_drag_coefficient: Option<f64>,
     /// Wetted hull area [m²]. Boats only.
@@ -37,6 +41,8 @@ impl AerodynamicBody for VehicleConfig {
     fn reference_area(&self) -> f64 { self.reference_area_m2 }
     fn mass(&self) -> f64 { self.mass_kg }
     fn stall_aoa_deg(&self) -> f64 { self.stall_aoa_deg.unwrap_or(16.0) }
+    fn aspect_ratio(&self) -> f64 { self.aspect_ratio.unwrap_or(8.0) }
+    fn oswald_efficiency(&self) -> f64 { self.oswald_efficiency.unwrap_or(0.8) }
     fn hull_drag_coefficient(&self) -> Option<f64> { self.hull_drag_coefficient }
     fn wetted_area_m2(&self) -> Option<f64> { self.wetted_area_m2 }
 }
@@ -45,28 +51,29 @@ impl AerodynamicBody for VehicleConfig {
 
 #[derive(Debug, Deserialize)]
 pub struct EnvironmentConfig {
-    /// Air density [kg/m³].
     pub air_density_kg_m3: f64,
-    /// Ambient temperature [°C].
     pub temperature_c: f64,
-    /// Headwind speed (positive = into vehicle) [m/s].
     pub wind_speed_ms: f64,
     /// Water density [kg/m³]. Boats only. Defaults to 1025 (seawater).
     pub water_density_kg_m3: Option<f64>,
 }
 
-// ── Simulation sweep ──────────────────────────────────────────────────────────
+// ── Simulation ────────────────────────────────────────────────────────────────
 
 #[derive(Debug, Deserialize)]
 pub struct SimulationConfig {
     pub vehicle_type: VehicleType,
+    // Velocity sweep
     pub velocity_start_ms: f64,
     pub velocity_end_ms: f64,
     pub velocity_step_ms: f64,
-    /// Angle of attack [degrees]. Used by aircraft model; ignored for cars.
     pub angle_of_attack_deg: f64,
-    /// Filename written inside the `output/` directory.
     pub output_file: String,
+    // AoA sweep (required when --aoa-sweep is passed)
+    pub velocity_fixed_ms: Option<f64>,
+    pub aoa_start_deg: Option<f64>,
+    pub aoa_end_deg: Option<f64>,
+    pub aoa_step_deg: Option<f64>,
 }
 
 // ── Top-level ─────────────────────────────────────────────────────────────────
