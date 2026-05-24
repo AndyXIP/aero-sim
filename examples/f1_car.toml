@@ -1,1 +1,19 @@
-# Example vehicle config — F1 car
+[vehicle]
+name = "F1 Car (high-downforce)"
+mass_kg = 800.0
+drag_coefficient = 1.05
+lift_coefficient = -3.5       # negative = downforce
+frontal_area_m2 = 1.5
+reference_area_m2 = 10.0
+
+[environment]
+air_density_kg_m3 = 1.225
+temperature_c = 25.0
+wind_speed_ms = 0.0
+
+[simulation]
+velocity_start_ms = 10.0
+velocity_end_ms = 90.0
+velocity_step_ms = 5.0
+angle_of_attack_deg = 0.0
+output_file = "f1_car.csv"
