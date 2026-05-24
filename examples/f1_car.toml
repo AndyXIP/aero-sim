@@ -12,6 +12,7 @@ temperature_c = 25.0
 wind_speed_ms = 0.0
 
 [simulation]
+vehicle_type = "car"
 velocity_start_ms = 10.0
 velocity_end_ms = 90.0
 velocity_step_ms = 5.0

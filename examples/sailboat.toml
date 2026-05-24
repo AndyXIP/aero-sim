@@ -1,0 +1,24 @@
+# Beneteau First 40 racing sloop
+[vehicle]
+name = "Beneteau First 40"
+mass_kg = 6800.0
+drag_coefficient = 0.4        # above-waterline superstructure
+lift_coefficient = 0.0        # no aerodynamic lift from hull
+frontal_area_m2 = 8.0         # above-waterline frontal area
+reference_area_m2 = 8.0
+hull_drag_coefficient = 0.006  # frictional + form drag on hull
+wetted_area_m2 = 40.0         # submerged hull surface area
+
+[environment]
+air_density_kg_m3 = 1.225
+temperature_c = 20.0
+wind_speed_ms = 0.0
+water_density_kg_m3 = 1025.0  # seawater
+
+[simulation]
+vehicle_type = "boat"
+velocity_start_ms = 0.5
+velocity_end_ms = 8.0
+velocity_step_ms = 0.5
+angle_of_attack_deg = 0.0
+output_file = "sailboat.csv"

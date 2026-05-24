@@ -14,4 +14,19 @@ pub trait AerodynamicBody {
 
     /// Total mass of the body [kg].
     fn mass(&self) -> f64;
+
+    /// Critical AoA at which stall begins [degrees]. Aircraft only. Default: 16°.
+    fn stall_aoa_deg(&self) -> f64 {
+        16.0
+    }
+
+    /// Hull drag coefficient (Cd_hull). Marine vessels only. `None` for others.
+    fn hull_drag_coefficient(&self) -> Option<f64> {
+        None
+    }
+
+    /// Wetted hull area [m²]. Marine vessels only. `None` for others.
+    fn wetted_area_m2(&self) -> Option<f64> {
+        None
+    }
 }
