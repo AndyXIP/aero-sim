@@ -24,3 +24,7 @@ target
 # Added by cargo
 
 /target
+
+# Simulation output — keep the directory, ignore generated files
+/output/*
+!/output/.gitkeep
