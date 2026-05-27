@@ -35,16 +35,36 @@ pub struct VehicleConfig {
 }
 
 impl AerodynamicBody for VehicleConfig {
-    fn drag_coefficient(&self) -> f64 { self.drag_coefficient }
-    fn lift_coefficient(&self) -> f64 { self.lift_coefficient }
-    fn frontal_area(&self) -> f64 { self.frontal_area_m2 }
-    fn reference_area(&self) -> f64 { self.reference_area_m2 }
-    fn mass(&self) -> f64 { self.mass_kg }
-    fn stall_aoa_deg(&self) -> f64 { self.stall_aoa_deg.unwrap_or(16.0) }
-    fn aspect_ratio(&self) -> f64 { self.aspect_ratio.unwrap_or(8.0) }
-    fn oswald_efficiency(&self) -> f64 { self.oswald_efficiency.unwrap_or(0.8) }
-    fn hull_drag_coefficient(&self) -> Option<f64> { self.hull_drag_coefficient }
-    fn wetted_area_m2(&self) -> Option<f64> { self.wetted_area_m2 }
+    fn drag_coefficient(&self) -> f64 {
+        self.drag_coefficient
+    }
+    fn lift_coefficient(&self) -> f64 {
+        self.lift_coefficient
+    }
+    fn frontal_area(&self) -> f64 {
+        self.frontal_area_m2
+    }
+    fn reference_area(&self) -> f64 {
+        self.reference_area_m2
+    }
+    fn mass(&self) -> f64 {
+        self.mass_kg
+    }
+    fn stall_aoa_deg(&self) -> f64 {
+        self.stall_aoa_deg.unwrap_or(16.0)
+    }
+    fn aspect_ratio(&self) -> f64 {
+        self.aspect_ratio.unwrap_or(8.0)
+    }
+    fn oswald_efficiency(&self) -> f64 {
+        self.oswald_efficiency.unwrap_or(0.8)
+    }
+    fn hull_drag_coefficient(&self) -> Option<f64> {
+        self.hull_drag_coefficient
+    }
+    fn wetted_area_m2(&self) -> Option<f64> {
+        self.wetted_area_m2
+    }
 }
 
 // ── Environment ───────────────────────────────────────────────────────────────

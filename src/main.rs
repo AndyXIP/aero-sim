@@ -36,7 +36,10 @@ fn main() -> Result<(), AeroError> {
 
     println!("Loading config: {}", cli.config.display());
     let config = input::load_config(&cli.config)?;
-    println!("Vehicle: {} ({:?})", config.vehicle.name, config.simulation.vehicle_type);
+    println!(
+        "Vehicle: {} ({:?})",
+        config.vehicle.name, config.simulation.vehicle_type
+    );
 
     let env = core::FluidEnvironment {
         air_density: config.environment.air_density_kg_m3,
@@ -82,9 +85,9 @@ fn main() -> Result<(), AeroError> {
                 r.velocity_ms,
                 r.velocity_ms * 3.6
             ),
-            None => println!(
-                "Warning: no airborne point found — increase velocity_end_ms in config"
-            ),
+            None => {
+                println!("Warning: no airborne point found — increase velocity_end_ms in config")
+            }
         }
     }
 
